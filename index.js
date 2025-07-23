@@ -10,9 +10,10 @@
 
  const app=express();
 
- const PORT=4000;
+ const PORT=process.env.PORT || 4000;
 
  dotEnv.config();
+ app.use(cors())
  
  mongoose.connect(process.env.MONGO_URI)
  .then(()=>console.log("MongoDB connected successfully"))
@@ -30,7 +31,7 @@
     console.log(`server started and running at ${PORT}`);
  });
 
- 
- app.use(`/home`,(req,res)=>{
-    res.send("<h1>welcome to myproject<h1>");
+
+ app.use(`/`,(req,res)=>{
+    res.send("<h1>welcome to SUBY<h1>");
  })
